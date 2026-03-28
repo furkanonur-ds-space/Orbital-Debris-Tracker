@@ -1,4 +1,42 @@
-stations.txt
-index.php
-*.pyc
+# Python
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pycache
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Skyfield data cache (auto-downloaded, not needed in repo)
+*.txt
+!requirements.txt
+*.bsp
+Leap_Second.dat
+finals2000A.all
+
+# Plotly output
+output.html
+
+# Streamlit
+.streamlit/
+
+# Environment variables
+.env
+.env.*
+
+# IDE / OS
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# Legacy / temp files (not part of new architecture)
+index.php
+gp.php
+tracker.py
+tracker_v2.py

@@ -1,46 +1,112 @@
-# Orbital Debris & Satellite Tracker
+# 🛰️ Orbital Debris & Satellite Tracker
 
-### Project Overview
-This project is a Python-based astrodynamics tool designed to visualize and analyze Low Earth Orbit (LEO) objects in real-time. Utilizing **NASA/CelesTrak TLE data**, it performs orbital propagation to map the current positions of active satellites and space debris.
+> Real-time LEO object tracking, 3D visualization, and conjunction risk analysis using **NASA/CelesTrak TLE data** and **SGP4 orbital propagation**.
 
-The ultimate goal is to develop a **Conjunction Assessment** system that identifies potential collision risks between space assets and debris fields.
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python) ![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-FF4B4B?logo=streamlit) ![Plotly](https://img.shields.io/badge/Plotly-3D_Globe-3D4DB7?logo=plotly) ![License](https://img.shields.io/badge/License-MIT-green)
 
-### Tech Stack
-* **Language:** Python 3.14.2
-* **Orbital Mechanics:** `Skyfield` (SGP4 propagation, WGS84 coordinate systems)
-* **Data Processing:** `Pandas` (ETL pipeline for TLE data)
-* **Visualization:** `Plotly` (Interactive 3D Geospatial mapping)
-* **Data Source:** CelesTrak (NORAD GP Element Sets)
+---
 
-### Current Status & Roadmap
+## 📸 Features
 
-#### Phase 1: Core Engine (In Progress)
-- [x] Fetch real-time TLE data from CelesTrak.
-- [x] Parse TLE data into Skyfield EarthSatellite objects.
-- [x] Calculate Geocentric (GCRS) vectors based on current Epoch.
-- [x] Convert vectors to Geodetic coordinates (Latitude/Longitude/Altitude) using WGS84 model.
-- [x] Clean and structure data using Pandas DataFrames.
-- [ ] Visualizing objects on a 3D Earth Map using Plotly.
+| Feature | Status |
+|---|---|
+| Real-time TLE data from CelesTrak (6 object groups) | ✅ |
+| SGP4 propagation → Geodetic coordinates (WGS-84) | ✅ |
+| Interactive 3D orthographic globe (Plotly, dark theme) | ✅ |
+| Streamlit web interface with live sidebar filters | ✅ |
+| Conjunction Assessment — proximity flagging (< N km) | ✅ |
+| High-risk object highlighting in RED on the globe | ✅ |
+| Downloadable CSV conjunction risk report | ✅ |
 
-#### Phase 2: Web Application (Planned)
-- [ ] Migrate the visualization to a **Streamlit** web interface.
-- [ ] Implement interactive filters (e.g., Show only Debris, Show only Space Stations).
+---
 
-#### Phase 3: Risk Analysis (Planned)
-- [ ] Develop a **Proximity Calculator** to detect close approaches.
-- [ ] Visualize "High Risk" objects (objects < 100km apart) in red.
-- [ ] Implement a user-click callback to show specific orbital parameters.
+## 🚀 Quick Start
 
-### How to Run
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/](https://github.com/)[furkanonur-ds-space]/Orbital-Debris-Tracker.git
-2. Install dependencies:
-    ```bash
-    pip install skyfield pandas plotly
-3. Run the tracker:
-    ```bash
-    python tracker.py
+### 1. Clone & install
+```bash
+git clone https://github.com/furkanonur-ds-space/Orbital-Debris-Tracker.git
+cd Orbital-Debris-Tracker
+pip install -r requirements.txt
+```
 
-### Author
-- Furkan Onur
+### 2. Run the web app
+```bash
+streamlit run app.py
+```
+
+Open **http://localhost:8501** in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
+SpaceDebrisProject/
+├── core/
+│   ├── __init__.py
+│   ├── data_fetcher.py   # TLE ETL pipeline — CelesTrak API, multi-group
+│   ├── visualizer.py     # Plotly 3D orthographic globe (dark theme)
+│   └── risk_engine.py    # Conjunction assessment — ECEF distance engine
+├── app.py                # Streamlit web application (all phases integrated)
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🔭 Data Sources
+
+| CelesTrak Group | Description |
+|---|---|
+| `stations` | Space Stations (ISS, CSS …) |
+| `active` | All active satellites |
+| `cosmos-1408-debris` | Russian ASAT test debris (2021) |
+| `fengyun-1c-debris` | Chinese ASAT test debris (2007) |
+| `iridium-33-debris` | Iridium 33 collision debris (2009) |
+| `cosmos-2251-debris` | Cosmos 2251 collision debris (2009) |
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Library |
+|---|---|
+| Orbital Mechanics | `skyfield` (SGP4, WGS-84) |
+| Data Processing | `pandas`, `numpy` |
+| Visualization | `plotly` (3D globe) |
+| Web Interface | `streamlit` |
+| Data Source | [CelesTrak](https://celestrak.org) / NORAD |
+
+---
+
+## 🗺️ Architecture
+
+```
+CelesTrak API (TLE data)
+        │
+        ▼
+core/data_fetcher.py   → fetch → propagate → DataFrame
+        │
+        ├──▶ core/visualizer.py  → Plotly 3D orthographic globe
+        │
+        └──▶ core/risk_engine.py → Conjunction pairs (ECEF distances)
+                        │
+                        ▼
+               app.py (Streamlit)  →  http://localhost:8501
+```
+
+---
+
+## 🗓️ Roadmap
+
+- [x] **Phase 1** — Core Engine: TLE fetch, SGP4 propagation, 3D globe visualization
+- [x] **Phase 2** — Web Application: Streamlit UI, live filters, data refresh
+- [x] **Phase 3** — Risk Analysis: Conjunction assessment, risk highlighting, CSV export
+- [ ] **Phase 4** *(Future)* — KD-Tree optimisation for large datasets (10 000+ objects)
+- [ ] **Phase 4** *(Future)* — Orbital parameter sidebar on object click
+
+---
+
+## 👤 Author
+
+**Furkan Onur** — [GitHub](https://github.com/furkanonur-ds-space)
