@@ -1,4 +1,4 @@
-# 🛰️ Orbital Debris & Satellite Tracker
+# Orbital Debris & Satellite Tracker
 
 > Real-time LEO object tracking, 3D visualization, and conjunction risk analysis using **NASA/CelesTrak TLE data** and **SGP4 orbital propagation**.
 
@@ -6,21 +6,21 @@
 
 ---
 
-## 📸 Features
+## Features
 
 | Feature | Status |
 |---|---|
-| Real-time TLE data from CelesTrak (6 object groups) | ✅ |
-| SGP4 propagation → Geodetic coordinates (WGS-84) | ✅ |
-| Interactive 3D orthographic globe (Plotly, dark theme) | ✅ |
-| Streamlit web interface with live sidebar filters | ✅ |
-| Conjunction Assessment — proximity flagging (< N km) | ✅ |
-| High-risk object highlighting in RED on the globe | ✅ |
-| Downloadable CSV conjunction risk report | ✅ |
+| Real-time TLE data from CelesTrak (6 object groups) | [x] |
+| SGP4 propagation → Geodetic coordinates (WGS-84) | [x] |
+| Interactive 3D orthographic globe (Plotly, dark theme) | [x] |
+| Streamlit web interface with live sidebar filters | [x] |
+| Conjunction Assessment — proximity flagging (< N km) | [x] |
+| High-risk object highlighting in RED on the globe | [x] |
+| Downloadable CSV conjunction risk report | [x] |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & install
 ```bash
@@ -38,7 +38,7 @@ Open **http://localhost:8501** in your browser.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 SpaceDebrisProject/
@@ -54,7 +54,7 @@ SpaceDebrisProject/
 
 ---
 
-## 🔭 Data Sources
+## Data Sources
 
 | CelesTrak Group | Description |
 |---|---|
@@ -67,7 +67,7 @@ SpaceDebrisProject/
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 | Layer | Library |
 |---|---|
@@ -79,7 +79,7 @@ SpaceDebrisProject/
 
 ---
 
-## 🗺️ Architecture
+## Architecture
 
 ```
 CelesTrak API (TLE data)
@@ -97,7 +97,7 @@ core/data_fetcher.py   → fetch → propagate → DataFrame
 
 ---
 
-## 🗓️ Roadmap
+## Roadmap
 
 - [x] **Phase 1** — Core Engine: TLE fetch, SGP4 propagation, 3D globe visualization
 - [x] **Phase 2** — Web Application: Streamlit UI, live filters, data refresh
@@ -107,6 +107,6 @@ core/data_fetcher.py   → fetch → propagate → DataFrame
 
 ---
 
-## 👤 Author
+## Author
 
 **Furkan Onur** — [GitHub](https://github.com/furkanonur-ds-space)
